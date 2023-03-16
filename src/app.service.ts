@@ -16,7 +16,7 @@ export class AppService {
             TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
             OPENAI_KEY: process.env.OPENAI_KEY,
             gpt_model: this.model,
-            gpt_response: await this.getChatGPTResponse(`Quem e voce?`)
+            //gpt_response: await this.getChatGPTResponse(`Quem e voce?`)
         };
     }
 
@@ -32,16 +32,16 @@ export class AppService {
     }
 
     listen() {
-        this.twilioService.client.messages
-            .list({
-                limit: 20,
-                from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
-            })
-            .then((messages) => {
-                messages.forEach((message) => {
-                    console.log(message.body);
-                });
-            });
+        // this.twilioService.client.messages
+        //     .list({
+        //         limit: 20,
+        //         from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
+        //     })
+        //     .then((messages) => {
+        //         messages.forEach((message) => {
+        //             console.log(message.body);
+        //         });
+        //     });
     }
 
     public async getChatGPTResponse(content: string): Promise<string> {

@@ -4,10 +4,10 @@ import axios from 'axios';
 
 @Injectable()
 export class AppService {
-    model : string = "gpt-3.5-turbo";
+    model: string = "gpt-3.5-turbo";
     constructor(
         private readonly twilioService: TwilioService
-    ) { 
+    ) {
         this.model = process.env.CHATGPT_MODEL || "gpt-3.5-turbo";
     }
 
@@ -23,7 +23,7 @@ export class AppService {
     }
 
     async sendMessage(param: any) {
-        console.log({param})
+        console.log({ param })
         const chatGPTResponse = await this.getChatGPTResponse(param.Body);
 
         await this.twilioService.client.messages.create({
@@ -61,15 +61,18 @@ export class AppService {
             "messages": [{ "role": "user", content }]
         };
 
+        const presentation = "🤖 *Chat GPT* 🤖 \n\n";
+        let message = `${presentation} Sorry, I could not process your request.`;
+
         try {
             const response = await axios.post(apiUrl, data, { headers });
-            console.log({
-                response: response.data
-            })
-            return response.data.choices[0].message.content.trim();
+            console.log({ gptResponse: response.data })
+            message = `${presentation}${response.data.choices[0].message.content.trim()}`;
         } catch (error) {
             console.log({ error });
-            return 'CHATGPT - Sorry, I could not process your request.';
+            message = `${presentation} Sorry, I could not process your request.`
+        } finally {
+            return message;
         }
     }
 }

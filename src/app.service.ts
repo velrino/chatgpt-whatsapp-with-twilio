@@ -6,7 +6,7 @@ import axios from 'axios';
 export class AppService {
     model : string = "gpt-3.5-turbo";
     constructor(
-        //private readonly twilioService: TwilioService
+        private readonly twilioService: TwilioService
     ) { 
         this.model = process.env.CHATGPT_MODEL || "gpt-3.5-turbo";
     }
@@ -18,32 +18,33 @@ export class AppService {
             TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
             OPENAI_KEY: process.env.OPENAI_KEY,
             gpt_model: this.model,
-            //gpt_response: await this.getChatGPTResponse(`Quem e voce?`)
+            gpt_response: await this.getChatGPTResponse(`Quem e voce?`)
         };
     }
 
     async sendMessage(param: any) {
-        // const chatGPTResponse = await this.getChatGPTResponse(param.Body);
+        console.log({param})
+        const chatGPTResponse = await this.getChatGPTResponse(param.Body);
 
-        // await this.twilioService.client.messages.create({
-        //     to: `whatsapp:${param.WaId}`,
-        //     from: `${param.To}`,
-        //     body: chatGPTResponse,
+        await this.twilioService.client.messages.create({
+            to: `whatsapp:${param.WaId}`,
+            from: `${param.To}`,
+            body: chatGPTResponse,
 
-        // }).then(message => console.log({ message }));
+        }).then(message => console.log({ message }));
     }
 
     listen() {
-        // this.twilioService.client.messages
-        //     .list({
-        //         limit: 20,
-        //         from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
-        //     })
-        //     .then((messages) => {
-        //         messages.forEach((message) => {
-        //             console.log(message.body);
-        //         });
-        //     });
+        this.twilioService.client.messages
+            .list({
+                limit: 20,
+                from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
+            })
+            .then((messages) => {
+                messages.forEach((message) => {
+                    console.log(message.body);
+                });
+            });
     }
 
     public async getChatGPTResponse(content: string): Promise<string> {

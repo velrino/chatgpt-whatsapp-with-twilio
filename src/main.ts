@@ -9,11 +9,11 @@ async function bootstrap() {
 
   twilioService.listen();
 
-  const port = process.env.APP_PORT ?? 80;
+  const PORT = process.env.PORT || 5001;
   const host = process.env.HOST || '0.0.0.0';
 
-  app.listen(port, host, () => {
-    console.log(`Server listening on port ${port}`);
+  app.listen(PORT, host, () => {
+    console.log(`Server listening on port ${PORT}`);
   });
 }
 

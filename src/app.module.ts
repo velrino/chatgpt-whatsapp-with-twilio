@@ -8,10 +8,10 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TwilioModule.forRoot({
-      accountSid: process.env.TWILIO_ACCOUNT_SID,
-      authToken: process.env.TWILIO_AUTH_TOKEN,
-    }),
+    // TwilioModule.forRoot({
+    //   accountSid: process.env.TWILIO_ACCOUNT_SID,
+    //   authToken: process.env.TWILIO_AUTH_TOKEN,
+    // }),
   ],
   controllers: [AppController],
   providers: [AppService],

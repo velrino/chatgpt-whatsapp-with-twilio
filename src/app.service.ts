@@ -5,7 +5,9 @@ import axios from 'axios';
 @Injectable()
 export class AppService {
     model : string = "gpt-3.5-turbo";
-    constructor(private readonly twilioService: TwilioService) { 
+    constructor(
+        //private readonly twilioService: TwilioService
+    ) { 
         this.model = process.env.CHATGPT_MODEL || "gpt-3.5-turbo";
     }
 
@@ -21,14 +23,14 @@ export class AppService {
     }
 
     async sendMessage(param: any) {
-        const chatGPTResponse = await this.getChatGPTResponse(param.Body);
+        // const chatGPTResponse = await this.getChatGPTResponse(param.Body);
 
-        await this.twilioService.client.messages.create({
-            to: `whatsapp:${param.WaId}`,
-            from: `${param.To}`,
-            body: chatGPTResponse,
+        // await this.twilioService.client.messages.create({
+        //     to: `whatsapp:${param.WaId}`,
+        //     from: `${param.To}`,
+        //     body: chatGPTResponse,
 
-        }).then(message => console.log({ message }));
+        // }).then(message => console.log({ message }));
     }
 
     listen() {

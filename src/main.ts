@@ -9,7 +9,7 @@ async function bootstrap() {
 
   twilioService.listen();
 
-  await app.listen(8000);
+  await app.listen(process.env.APP_PORT || 8000);
 }
 
 bootstrap();

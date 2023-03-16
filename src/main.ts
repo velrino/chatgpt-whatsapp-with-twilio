@@ -11,7 +11,8 @@ async function bootstrap() {
 
   const port = process.env.APP_PORT ?? 80;
   const host = process.env.HOST || '0.0.0.0';
-  await app.listen(port, () => {
+
+  app.listen(port, host, () => {
     console.log(`Server listening on port ${port}`);
   });
 }

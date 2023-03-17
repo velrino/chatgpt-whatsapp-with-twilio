@@ -11,14 +11,10 @@ export class AppService {
         this.model = process.env.CHATGPT_MODEL || "gpt-3.5-turbo";
     }
 
-    async getHello() {
+    async getHello(question: string) {
         return {
-            TWILIO_WHATSAPP_NUMBER: process.env.TWILIO_WHATSAPP_NUMBER,
-            TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
-            TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
-            OPENAI_KEY: process.env.OPENAI_KEY,
             gpt_model: this.model,
-            gpt_response: await this.getChatGPTResponse(`Quem e voce?`)
+            gpt_response: await this.getChatGPTResponse(question || `Who are you ?`)
         };
     }
 

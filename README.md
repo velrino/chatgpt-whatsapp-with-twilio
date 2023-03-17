@@ -65,10 +65,19 @@ http://localhost:5001/
 
 For default **PORT** this project is 5001, but you can setting **PORT** inside `.env`
 
+The default model is ``gpt-3.5-turbo``
+
+ ``Who are you ?`` is default question when you open in proejct in browser
+
 <p align="center">
   <img src="/documentation/images/running-localhost.png" />
 </p>
 
+But you can also ask another question by simply passing it in the URL as `?question=YOUR_QUESTION`
+
+<p align="center">
+  <img src="/documentation/images/running-localhost-2.png" />
+</p>
 
 ## Making this local project accessible over the internet
 ```bash

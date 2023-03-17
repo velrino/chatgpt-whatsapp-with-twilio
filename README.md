@@ -2,7 +2,7 @@
 # ChatGPT + WhatsApp Integration using Nest.js
 
 <p align="center">
-  <img src="/documentation/video.gif" height="500" style="float: right; margin-left: 20px"/>
+  <img src="/documentation/video.gif" style="min-height: 500px"/>
 </p>
 
 Hi, welcome! 😃
@@ -19,6 +19,12 @@ or
 
 [Run it locally using Ngrok to make it accessible over the internet.](#local)
 
+
+## How does this work?
+
+<p align="center">
+  <img src="/documentation/images/ChatGPT + WhatsApp Integration using Nest.js.jpg"/>
+</p>
 
 ## Requirements
 

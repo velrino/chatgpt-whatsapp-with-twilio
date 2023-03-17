@@ -2,7 +2,7 @@
 # ChatGPT + WhatsApp Integration using Nest.js
 
 <p align="center">
-  <img src="/documentation/video.gif" style="min-height: 500px"/>
+  <img src="/documentation/video.gif" style="min-height: 400px; max-height: 400px;"/>
 </p>
 
 Hi, welcome! 😃
